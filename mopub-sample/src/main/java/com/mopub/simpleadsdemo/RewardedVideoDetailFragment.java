@@ -80,7 +80,7 @@ public class RewardedVideoDetailFragment extends Fragment implements MoPubReward
 
         MoPubRewardedVideos.setRewardedVideoListener(this);
 
-        mAdUnitId = adConfiguration.getAdUnitId();
+        mAdUnitId = "a8d5f5fff87c49b2a60c5df86ab4f447";
         mMoPubRewardsMap = new HashMap<>();
 
         views.mDescriptionView.setText(adConfiguration.getDescription());
