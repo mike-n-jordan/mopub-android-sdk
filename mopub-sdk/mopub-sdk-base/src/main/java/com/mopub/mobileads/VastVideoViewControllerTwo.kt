@@ -260,7 +260,7 @@ class VastVideoViewControllerTwo(
                     }
                 }
                 it.visibility = INVISIBLE
-                val layoutParams = vastIconConfig?.let { iconConfig
+                val layoutParams = vastIconConfig?.let { iconConfig ->
                     RelativeLayout.LayoutParams(
                         Dips.asIntPixels(iconConfig.width.toFloat(), context),
                         Dips.asIntPixels(iconConfig.height.toFloat(), context)
