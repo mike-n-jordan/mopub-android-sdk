@@ -1,3 +1,8 @@
+## Version 5.12.1 (May 29, 2020)
+- **Features**
+  - Updated media2 library to 1.3.1
+  - Fixed memory leak in BaseBroadcastReceiver
+
 ## Version 5.12.0 (April 6, 2020)
 - **Features**
   - Add Mintegral as a supported network.
