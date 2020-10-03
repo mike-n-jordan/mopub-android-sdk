@@ -12,9 +12,10 @@ repositories {
     flatDir {
         dirs project(':mopub-sdk').file('../libs')
     }
+    maven { url 'https://jitpack.io' }
 }
 
-project.group = 'com.mk-jones'
+project.group = 'com.github.mk-jones'
 project.version = '5.13.1'
 
 android {
