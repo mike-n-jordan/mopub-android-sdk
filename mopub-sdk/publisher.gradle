@@ -44,6 +44,7 @@ android.libraryVariants.all { variant ->
 
 publish {
     repoName = bintrayRepo
+    userOrg = bintrayUserOrg
     groupId = project.group
     artifactId = project.ext.projectName
     uploadName = project.ext.uploadName
