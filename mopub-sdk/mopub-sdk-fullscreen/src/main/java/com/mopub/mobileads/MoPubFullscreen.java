@@ -164,7 +164,9 @@ public class MoPubFullscreen extends BaseAd implements VastManager.VastManagerLi
         mHandler = new Handler();
         mAdExpiration = () -> {
             MoPubLog.log(EXPIRED, ADAPTER_NAME, "time in seconds");
-            mLoadListener.onAdLoadFailed(MoPubErrorCode.EXPIRED);
+            if (mLoadListener != null) {
+                mLoadListener.onAdLoadFailed(MoPubErrorCode.EXPIRED);
+            }
             onInvalidate();
         };
 
