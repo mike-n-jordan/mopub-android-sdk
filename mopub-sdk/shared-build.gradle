@@ -12,10 +12,11 @@ repositories {
     flatDir {
         dirs project(':mopub-sdk').file('../libs')
     }
+    maven { url 'https://jitpack.io' }
 }
-
-project.group = 'com.mopub'
-project.version = '5.14.0'
+project.group = 'com.badoo.mobile'
+project.version = '5.14.1'
+project.group = 'com.github.badoo'
 
 android {
     compileOptions {
