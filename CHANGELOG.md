@@ -1,3 +1,7 @@
+## Version 5.14.1 (November 12, 2020)
+- **Features**
+  - Fixed null pointer exception in MoPubFullscreen when adExpired after listener cleared
+
 ## Version 5.14.0 (October 1, 2020)
 - **Features**
   - Add beta support for OMSDK version 1.3.4.
