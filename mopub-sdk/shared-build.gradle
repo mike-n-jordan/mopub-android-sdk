@@ -15,7 +15,7 @@ repositories {
     maven { url 'https://jitpack.io' }
 }
 project.group = 'com.badoo.mobile'
-project.version = '5.14.1'
+project.version = '5.14.2'
 project.group = 'com.github.badoo'
 
 android {
