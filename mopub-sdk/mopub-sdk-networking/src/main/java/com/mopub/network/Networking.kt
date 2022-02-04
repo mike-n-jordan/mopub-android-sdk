@@ -118,6 +118,11 @@ object Networking {
             }
         }
 
+    @JvmStatic
+    fun forceUserAgent(userAgent: String) {
+        this.userAgent = userAgent
+    }
+
     /**
      * Caches and returns the WebView user agent to be used across all SDK requests. This is
      * important because advertisers expect the same user agent across all request, impression, and

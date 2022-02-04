@@ -34,10 +34,11 @@ import static com.mopub.common.logging.MoPubLog.SdkLogEvent.INIT_STARTED;
 public class MoPub {
     public static final String SDK_VERSION = "5.18.0";
 
-    public enum LocationAwareness { NORMAL, TRUNCATED, DISABLED }
+    public enum LocationAwareness {NORMAL, TRUNCATED, DISABLED}
 
     /**
      * Browser agent to handle URIs.
+     *
      * @deprecated in favor of {@link BrowserAgentManager.BrowserAgent}.
      */
     @Deprecated
@@ -56,9 +57,9 @@ public class MoPub {
          * Maps header value from MoPub's AdServer to browser agent:
          * 0 is MoPub's in-app browser (IN_APP), and 1 is device's default browser (NATIVE).
          * For null or all other undefined values, returns default browser agent IN_APP.
+         *
          * @param browserAgent Integer header value from MoPub's AdServer.
          * @return IN_APP for 0, NATIVE for 1, and IN_APP for null or all other undefined values.
-         *
          * @deprecated Use {@link BrowserAgentManager.BrowserAgent#fromHeader(Integer)} instead.
          */
         @Deprecated
@@ -72,7 +73,8 @@ public class MoPub {
         }
 
         @Deprecated
-        @NonNull BrowserAgentManager.BrowserAgent toBrowserAgentFromManager() {
+        @NonNull
+        BrowserAgentManager.BrowserAgent toBrowserAgentFromManager() {
             return (this == BrowserAgent.IN_APP) ? BrowserAgentManager.BrowserAgent.IN_APP :
                     BrowserAgentManager.BrowserAgent.NATIVE;
         }
@@ -84,7 +86,8 @@ public class MoPub {
             "com.mopub.mobileads.MoPubRewardedAdManager";
 
     private static boolean sSearchedForUpdateActivityMethod = false;
-    @Nullable private static Method sUpdateActivityMethod;
+    @Nullable
+    private static Method sUpdateActivityMethod;
     private static boolean sSdkInitialized = false;
     private static boolean sSdkInitializing = false;
     private static AdapterConfigurationManager sAdapterConfigurationManager;
@@ -191,6 +194,14 @@ public class MoPub {
     public static void initializeSdk(@NonNull final Context context,
                                      @NonNull final SdkConfiguration sdkConfiguration,
                                      @Nullable final SdkInitializationListener sdkInitializationListener) {
+        initializeSdk(context, sdkConfiguration, sdkInitializationListener, null);
+    }
+
+    // PATCH-1 Allow us to force the UserAgent rather than letting Mopub fetch it on the Main Thread
+    public static void initializeSdk(@NonNull final Context context,
+                                     @NonNull final SdkConfiguration sdkConfiguration,
+                                     @Nullable final SdkInitializationListener sdkInitializationListener,
+                                     @Nullable final String userAgent) {
         Preconditions.checkNotNull(context);
         Preconditions.checkNotNull(sdkConfiguration);
 
@@ -228,6 +239,10 @@ public class MoPub {
 
         sSdkInitializing = true;
 
+        // PATCH-1 Allow us to force the UserAgent rather than letting Mopub fetch it on the Main Thread
+        if (userAgent != null) {
+            Networking.forceUserAgent(userAgent);
+        }
         // Guarantees initialization of the request queue on the main thread.
         Networking.setUrlRewriter(new PlayServicesUrlRewriter());
         Networking.getRequestQueue(context);
