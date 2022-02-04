@@ -6,11 +6,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
 
-def siteUrl = 'https://github.com/mopub/mopub-android-sdk'
-def gitUrl = 'github.com/mopub/mopub-android-sdk.git'
-
-// Maven signing
-ext."signing.password" = System.getenv('GPG_RING_PASS')
+def siteUrl = 'https://github.com/badoo/mopub-android-sdk'
+def gitUrl = 'https://github.com/badoo/mopub-android-sdk.git'
+def issuesUrl = 'https://github.com/mopub/mopub-android-sdk/issues'
+def bintrayRepo = 'mopub-android-sdk'
+def bintrayUserOrg = 'badoo'
+// Put your credentials (bintray.user, bintray.apikey) in ~/.gradle/gradle.properties
 
 task sourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
